@@ -1,5 +1,14 @@
 .chat{
     display: flex;
-    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+    width: 90%;
+    max-width: 1400px;
+
+    height: 85vh;
+
+    margin: 60px auto;
+    border-radius: 16px;
     overflow: hidden;
 }

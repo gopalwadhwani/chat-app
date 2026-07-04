@@ -5,6 +5,10 @@
     font-family: "Poppins", sans-serif;
 }
 
+body{
+    background: linear-gradient(180deg,#5964f2,#5146d8);
+}
+
 html,
 body,
 #root{
