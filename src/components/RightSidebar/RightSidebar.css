@@ -1,0 +1,124 @@
+.rs{
+    width: 260px;
+    height: 100vh;
+
+    background: #001030;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+/* Profile */
+
+.rs-profile{
+    padding: 35px 20px 25px;
+    text-align: center;
+}
+
+.rs-profile img{
+    width: 85px;
+    height: 85px;
+
+    border-radius: 50%;
+    object-fit: cover;
+
+    margin-bottom: 12px;
+}
+
+.rs-profile h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    margin: 0;
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.rs-profile p{
+    margin-top: 10px;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    color: #b8c7e0;
+}
+
+/* Divider */
+
+.rs hr{
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.15);
+
+    margin: 0 20px 20px;
+}
+
+/* Media */
+
+.rs-media{
+    flex: 1;
+
+    padding: 0 20px;
+}
+
+.rs-media p{
+    font-size: 16px;
+    font-weight: 500;
+
+    margin-bottom: 12px;
+}
+
+.rs-media div{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 8px;
+}
+
+.rs-media div img{
+    width: 100%;
+    aspect-ratio: 1;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.rs-media div img:hover{
+    transform: scale(1.05);
+}
+
+/* Logout Button */
+
+.rs button{
+    margin: 20px;
+
+    padding: 12px;
+
+    background: #077EFF;
+    color: white;
+
+    border: none;
+    border-radius: 25px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.rs button:hover{
+    background: #0569d6;
+}
