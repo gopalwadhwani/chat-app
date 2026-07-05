@@ -3,32 +3,32 @@ import "./LeftSidebar.css";
 import assets from "../../assets/assets";
 
 const LeftSidebar = () => {
-
   const [showMenu, setShowMenu] = useState(false);
 
   return (
     <div className="left-sidebar">
-
       <div className="sidebar-top">
 
         <div className="logo-row">
           <img src={assets.logo} alt="Logo" className="logo" />
 
-          <img
-            src={assets.menu_icon}
-            alt="Menu"
-            className="menu-icon"
-            onClick={() => setShowMenu(!showMenu)}
-          />
-        </div>
+          <div className="menu">
+            <img
+              src={assets.menu_icon}
+              alt="Menu"
+              className="menu-icon"
+              onClick={() => setShowMenu(!showMenu)}
+            />
 
-        {showMenu && (
-          <div className="sub-menu">
-            <p>Edit Profile</p>
-            <hr />
-            <p>Logout</p>
+            {showMenu && (
+              <div className="sub-menu">
+                <p>Edit Profile</p>
+                <hr />
+                <p>Logout</p>
+              </div>
+            )}
           </div>
-        )}
+        </div>
 
         <div className="search-box">
           <img
@@ -48,7 +48,11 @@ const LeftSidebar = () => {
       <div className="users-list">
         {Array(12).fill("").map((item, index) => (
           <div key={index} className="user">
-            <img src={assets.profile_img} alt="" className="profile-img" />
+            <img
+              src={assets.profile_img}
+              alt=""
+              className="profile-img"
+            />
 
             <div className="user-info">
               <p>John Doe</p>
@@ -57,7 +61,6 @@ const LeftSidebar = () => {
           </div>
         ))}
       </div>
-
     </div>
   );
 };

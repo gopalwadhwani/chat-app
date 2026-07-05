@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Login from "./pages/Login/Login";
 import Chat from "./pages/Chat/Chat";
-import Profile from "./pages/ProfileUpdate/ProfileUpdate";
+import ProfileUpdate from "./pages/ProfileUpdate/ProfileUpdate";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         
         <Route path="/" element={<Login />} />
         <Route path="/chat" element={<Chat />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<ProfileUpdate />} />
 
       </Routes>
     </>

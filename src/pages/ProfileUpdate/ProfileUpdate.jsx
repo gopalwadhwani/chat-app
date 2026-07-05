@@ -1,46 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
+import "./ProfileUpdate.css";
+import assets from "../../assets/assets";
 
-const Chat = () => {
-  return (
-    <div className="chat-page">
-      <div className="chat-sidebar">
-        <h2>Chats</h2>
+const ProfileUpdate = () => {
 
-        <div className="chat-user">
-          <p>User 1</p>
+    const [image, setImage] = useState(false);
+
+    return (
+        <div className='profile'>
+            <div className="profile-container">
+                <form>
+                    <h3>Profile Details</h3>
+
+                    <label htmlFor="avatar">
+                        <input
+                            onChange={(e)=>setImage(e.target.files[0])}
+                            type="file"
+                            id="avatar"
+                            hidden
+                        />
+
+                        <img
+                            src={image ? URL.createObjectURL(image) : assets.avatar_icon}
+                            alt=""
+                        />
+                        upload profile image
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="Your name"
+                        required
+                    />
+
+                    <textarea
+                        placeholder="Write profile bio"
+                        required
+                    ></textarea>
+
+                    <button type="submit">Save</button>
+                </form>
+
+                <img
+                    className='profile-pic'
+                    src={image ? URL.createObjectURL(image) : assets.logo_icon}
+                    alt=""
+                />
+            </div>
         </div>
+    )
+}
 
-        <div className="chat-user">
-          <p>User 2</p>
-        </div>
-      </div>
-
-      <div className="chat-container">
-        <div className="chat-header">
-          <h2>Chat Room</h2>
-        </div>
-
-        <div className="messages">
-          <div className="message received">
-            Hello 👋
-          </div>
-
-          <div className="message sent">
-            Hi
-          </div>
-        </div>
-
-        <div className="chat-input">
-          <input
-            type="text"
-            placeholder="Type message..."
-          />
-
-          <button>Send</button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Chat;
+export default ProfileUpdate;
