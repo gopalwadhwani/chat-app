@@ -1,26 +1,34 @@
 import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/logo.png";
+import { signup, login } from "../../config/firebase"; // adjust path to your firebase config file
+
 const Login = () => {
   const [currState, setCurrState] = useState("Sign up");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (currState === "Sign up") {
-      console.log("Sign up");
+      await signup(username, email, password);
     } else {
-      console.log("Login");
+      await login(email, password);
     }
+
+    setLoading(false);
   };
 
   return (
     <div className="login-container">
 
-      
-<div className="logo-section">
-  <img src={logo} alt="logo" className="logo" />
-</div>
+      <div className="logo-section">
+        <img src={logo} alt="logo" className="logo" />
+      </div>
 
       {/* Form */}
       <div className="form-box">
@@ -34,6 +42,8 @@ const Login = () => {
               type="text"
               placeholder="Username"
               className="input"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
           )}
@@ -42,6 +52,8 @@ const Login = () => {
             type="email"
             placeholder="Gmail"
             className="input"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
 
@@ -49,11 +61,13 @@ const Login = () => {
             type="password"
             placeholder="Password"
             className="input"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
 
-          <button type="submit">
-            {currState}
+          <button type="submit" disabled={loading}>
+            {loading ? "Please wait..." : currState}
           </button>
 
           {currState === "Sign up" && (
