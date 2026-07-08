@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ProfileUpdate.css";
 import assets from "../../assets/assets";
-import { auth, db } from "../../config/firebase"; // adjust path
+import { auth, db } from "../../config/firebase"; 
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { uploadToCloudinary } from "../../config/cloudinary"; // adjust path
 import { toast } from "react-toastify";
