@@ -10,7 +10,9 @@ const AppContextProvider = (props) => {
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState(null);
-  const [chatData, setChatData] = useState(null);
+  const [chatData, setChatData] = useState([]);
+  const [chatUser, setChatUser] = useState(null);
+  const [messagesId, setMessagesId] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const loadUserData = async (uid) => {
@@ -39,7 +41,9 @@ const AppContextProvider = (props) => {
         await loadUserData(user.uid);
       } else {
         setUserData(null);
-        setChatData(null);
+        setChatData([]);
+        setChatUser(null);
+        setMessagesId(null);
         setLoading(false);
         navigate("/");
       }
@@ -53,7 +57,7 @@ const AppContextProvider = (props) => {
       const chatRef = doc(db, "chats", userData.id);
       const unsubscribe = onSnapshot(chatRef, (snapshot) => {
         const data = snapshot.data();
-        if (data) {
+        if (data?.chatData) {
           setChatData(data.chatData);
         }
       });
@@ -67,6 +71,10 @@ const AppContextProvider = (props) => {
     setUserData,
     chatData,
     setChatData,
+    chatUser,
+    setChatUser,
+    messagesId,
+    setMessagesId,
     loadUserData,
     loading,
   };
