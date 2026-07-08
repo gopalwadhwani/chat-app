@@ -27,6 +27,10 @@ const RightSidebar = () => {
     if (!chatUser) {
         return (
             <div className='rs'>
+                <div className="rs-default">
+                    <img src={assets.logo_icon} alt="" />
+                    <p>Select a chat to view details</p>
+                </div>
                 <button onClick={() => logout()}>Logout</button>
             </div>
         )

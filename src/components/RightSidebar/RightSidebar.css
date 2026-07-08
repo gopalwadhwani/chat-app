@@ -98,6 +98,40 @@
     transform: scale(1.05);
 }
 
+.no-media{
+    font-size: 13px;
+    color: #b8c7e0;
+    text-align: center;
+
+    padding: 20px 0;
+}
+
+/* Empty state (before a chat is selected) */
+
+.rs-default{
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+
+    padding: 20px;
+    text-align: center;
+}
+
+.rs-default img{
+    width: 60px;
+    opacity: 0.5;
+}
+
+.rs-default p{
+    font-size: 14px;
+    color: #b8c7e0;
+}
+
 /* Logout Button */
 
 .rs button{

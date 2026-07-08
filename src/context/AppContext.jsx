@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { auth, db } from "../config/firebase"; // adjust path to your firebase config file
 
 export const AppContext = createContext();
@@ -66,6 +66,34 @@ const AppContextProvider = (props) => {
     }
   }, [userData]);
 
+  // updates lastMessage/updatedAt/messageSeen for both users in a conversation
+  const updateChatPreview = async (msgId, text, senderId, receiverId) => {
+    const userIds = [senderId, receiverId];
+
+    for (const id of userIds) {
+      try {
+        const userChatsRef = doc(db, "chats", id);
+        const userChatsSnap = await getDoc(userChatsRef);
+        const userChatsData = userChatsSnap.data();
+
+        if (!userChatsData) continue;
+
+        const chatIndex = userChatsData.chatData.findIndex(
+          (c) => c.messageId === msgId
+        );
+
+        if (chatIndex !== -1) {
+          userChatsData.chatData[chatIndex].lastMessage = text.slice(0, 30);
+          userChatsData.chatData[chatIndex].updatedAt = Date.now();
+          userChatsData.chatData[chatIndex].messageSeen = id === senderId;
+          await updateDoc(userChatsRef, { chatData: userChatsData.chatData });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
   const value = {
     userData,
     setUserData,
@@ -76,6 +104,7 @@ const AppContextProvider = (props) => {
     messagesId,
     setMessagesId,
     loadUserData,
+    updateChatPreview,
     loading,
   };
 
