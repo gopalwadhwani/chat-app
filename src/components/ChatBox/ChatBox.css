@@ -89,11 +89,12 @@
 
 .r-msg{
     display: flex;
+    flex-direction: row-reverse;
     align-items: flex-end;
 
     gap: 10px;
 
-    max-width: 70%;
+    max-width: 47%;
 }
 
 .r-msg .msg{
@@ -190,10 +191,10 @@
 
 /* Image messages */
 
-/* Image messages */
-
 .s-msg .msg-img,
 .r-msg .msg-img{
+    width: 220px;
+    height: 220px;
     max-width: 220px;
     max-height: 220px;
 
