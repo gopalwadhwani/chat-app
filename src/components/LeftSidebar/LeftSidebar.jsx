@@ -71,12 +71,13 @@ const LeftSidebar = () => {
   };
 
   // start (or open existing) chat with the searched user
+  // start (or open existing) chat with the searched user
   const addChat = async (targetUser) => {
     try {
       const alreadyExists = chatData.find((c) => c.rId === targetUser.id);
 
       if (alreadyExists) {
-        setChat(alreadyExists);
+        setChat({ ...alreadyExists, userData: targetUser });
         setSearch("");
         setShowSearch(false);
         return;
@@ -117,7 +118,6 @@ const LeftSidebar = () => {
       toast.error("Could not start chat");
     }
   };
-
   // build the list of conversations with each partner's profile info
   useEffect(() => {
     const buildChatUsers = async () => {
