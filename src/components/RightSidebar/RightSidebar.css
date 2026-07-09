@@ -1,158 +1,197 @@
-.rs{
+.rs {
     width: 280px;
     height: 85vh;
-
     background: #001030;
-    color: white;
-
+    color: #fff;
     display: flex;
     flex-direction: column;
-
     overflow-y: auto;
     flex-shrink: 0;
 }
 
-/* Profile */
+/* ================= Scrollbar ================= */
 
-.rs-profile{
+.rs::-webkit-scrollbar {
+    width: 6px;
+}
+
+.rs::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+}
+
+/* ================= Profile ================= */
+
+.rs-profile {
     padding: 35px 20px 25px;
     text-align: center;
 }
 
-.rs-profile img{
+.rs-profile img {
     width: 85px;
     height: 85px;
-
     border-radius: 50%;
     object-fit: cover;
-
     margin-bottom: 12px;
 }
 
-.rs-profile h3{
+.rs-profile h3 {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
-
     margin: 0;
-
     font-size: 20px;
     font-weight: 600;
+    word-break: break-word;
 }
 
-.rs-profile p{
+.rs-profile p {
     margin-top: 10px;
-
     font-size: 13px;
     line-height: 1.5;
-
     color: #b8c7e0;
+    word-break: break-word;
 }
 
-/* Divider */
+/* ================= Divider ================= */
 
-.rs hr{
+.rs hr {
     border: none;
-    border-top: 1px solid rgba(255,255,255,0.15);
-
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
     margin: 0 20px 20px;
 }
 
-/* Media */
+/* ================= Media ================= */
 
-.rs-media{
+.rs-media {
     flex: 1;
-
     padding: 0 20px;
 }
 
-.rs-media p{
+.rs-media p {
+    margin: 0 0 14px;
     font-size: 16px;
     font-weight: 500;
-
-    margin-bottom: 12px;
 }
 
-.rs-media div{
+.rs-media div {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
 }
 
-.rs-media div img{
+.rs-media div img {
     width: 100%;
     aspect-ratio: 1;
-
     object-fit: cover;
-
     border-radius: 8px;
-
     cursor: pointer;
-
-    transition: .2s;
+    transition: transform 0.25s ease;
 }
 
-.rs-media div img:hover{
+.rs-media div img:hover {
     transform: scale(1.05);
 }
 
-.no-media{
+.no-media {
+    padding: 20px 0;
     font-size: 13px;
     color: #b8c7e0;
     text-align: center;
-
-    padding: 20px 0;
 }
 
-/* Empty state (before a chat is selected) */
+/* ================= Empty State ================= */
 
-.rs-default{
+.rs-default {
     flex: 1;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     gap: 16px;
-
     padding: 20px;
     text-align: center;
 }
 
-.rs-default img{
+.rs-default img {
     width: 60px;
     opacity: 0.5;
 }
 
-.rs-default p{
+.rs-default p {
+    margin: 0;
     font-size: 14px;
     color: #b8c7e0;
 }
 
-/* Logout Button */
+/* ================= Logout Button ================= */
 
-.rs button{
+.rs button {
     margin: 20px;
-
     padding: 12px;
-
+    width: calc(100% - 40px);
     background: #077EFF;
-    color: white;
-
+    color: #fff;
     border: none;
     border-radius: 25px;
-
     font-size: 15px;
     font-weight: 500;
-
     cursor: pointer;
-
-    transition: .2s;
+    transition: all 0.25s ease;
 }
 
-.rs button:hover{
+.rs button:hover {
     background: #0569d6;
+    transform: translateY(-1px);
+}
+
+/* ================= Tablet ================= */
+
+@media (max-width: 768px) {
+
+    .rs {
+        width: 250px;
+        height: 100vh;
+    }
+
+    .rs-profile {
+        padding: 28px 16px 20px;
+    }
+
+    .rs-profile img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .rs-profile h3 {
+        font-size: 18px;
+    }
+
+    .rs-profile p {
+        font-size: 12px;
+    }
+
+    .rs-media {
+        padding: 0 16px;
+    }
+
+    .rs-media div {
+        gap: 6px;
+    }
+
+    .rs button {
+        margin: 16px;
+        width: calc(100% - 32px);
+    }
+}
+
+/* ================= Small Phones ================= */
+
+@media (max-width: 480px) {
+
+    .rs {
+        display: none;
+        /* Hide right sidebar on very small screens */
+    }
 }
