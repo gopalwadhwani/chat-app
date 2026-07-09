@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
-import { auth, db } from "../config/firebase"; // adjust path to your firebase config file
+import { auth, db } from "../config/firebase";
 
 export const AppContext = createContext();
 
@@ -13,6 +13,7 @@ const AppContextProvider = (props) => {
   const [chatData, setChatData] = useState([]);
   const [chatUser, setChatUser] = useState(null);
   const [messagesId, setMessagesId] = useState(null);
+  const [showRightSidebar, setShowRightSidebar] = useState(false); // mobile: profile/media panel visibility
   const [loading, setLoading] = useState(true);
 
   const loadUserData = async (uid) => {
@@ -44,6 +45,7 @@ const AppContextProvider = (props) => {
         setChatData([]);
         setChatUser(null);
         setMessagesId(null);
+        setShowRightSidebar(false);
         setLoading(false);
         navigate("/");
       }
@@ -66,7 +68,12 @@ const AppContextProvider = (props) => {
     }
   }, [userData]);
 
-  // updates lastMessage/updatedAt/messageSeen for both users in a conversation
+  // whenever a different chat is opened, always close the right sidebar
+  // so mobile users land back on ChatBox, not a stale profile view
+  useEffect(() => {
+    setShowRightSidebar(false);
+  }, [messagesId]);
+
   const updateChatPreview = async (msgId, text, senderId, receiverId) => {
     const userIds = [senderId, receiverId];
 
@@ -103,6 +110,8 @@ const AppContextProvider = (props) => {
     setChatUser,
     messagesId,
     setMessagesId,
+    showRightSidebar,
+    setShowRightSidebar,
     loadUserData,
     updateChatPreview,
     loading,
