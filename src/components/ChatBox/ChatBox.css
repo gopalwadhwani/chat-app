@@ -143,7 +143,7 @@
 /* Image messages */
 
 .s-msg .msg-img,
-.r-msg .msg-img{
+.r-msg .msg-img {
     width: 220px;
     height: 220px;
 
@@ -187,14 +187,14 @@
 }
 
 .chat-input label img,
-.chat-input > img {
+.chat-input>img {
     width: 24px;
     cursor: pointer;
     transition: transform 0.25s ease;
 }
 
 .chat-input label img:hover,
-.chat-input > img:hover {
+.chat-input>img:hover {
     transform: scale(1.1);
 }
 
@@ -285,9 +285,12 @@
         width: 22px;
     }
 
+    /* inside @media (max-width: 768px) */
     .s-msg .msg-img,
     .r-msg .msg-img {
-        max-width: 180px;
+        width: 180px;
+        height: 180px;
+        max-width: min(180px, 70vw);
     }
 }
 
@@ -350,10 +353,13 @@
         width: 20px;
     }
 
-    .s-msg .msg-img,
-    .r-msg .msg-img {
-        max-width: 150px;
-    }
+    /* inside @media (max-width: 480px) */
+.s-msg .msg-img,
+.r-msg .msg-img {
+    width: 150px;
+    height: 150px;
+    max-width: min(150px, 70vw);
+}
 
     .chat-welcome img {
         width: 60px;
