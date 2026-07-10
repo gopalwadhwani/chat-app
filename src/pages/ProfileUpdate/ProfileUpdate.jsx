@@ -17,6 +17,7 @@ const ProfileUpdate = () => {
     const [bio, setBio] = useState("");
     const [loading, setLoading] = useState(false);
     const [initializing, setInitializing] = useState(true);
+    const [isEditing, setIsEditing] = useState(false); // true if profile was already complete on load
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -29,6 +30,11 @@ const ProfileUpdate = () => {
                     setName(userData.name || "");
                     setBio(userData.bio || "");
                     setPrevImage(userData.avatar || "");
+
+                    // profile is only "editable-with-back-button" if it was already complete
+                    if (userData.avatar && userData.name) {
+                        setIsEditing(true);
+                    }
                 }
             } catch (error) {
                 console.error(error);
@@ -82,6 +88,15 @@ const ProfileUpdate = () => {
         <div className='profile'>
             <div className="profile-container">
                 <form onSubmit={handleSubmit}>
+                    {isEditing && (
+                        <img
+                            src={assets.arrow_icon}
+                            alt=""
+                            className="profile-back"
+                            onClick={() => navigate("/chat")}
+                        />
+                    )}
+
                     <h3>Profile Details</h3>
 
                     <label htmlFor="avatar">
