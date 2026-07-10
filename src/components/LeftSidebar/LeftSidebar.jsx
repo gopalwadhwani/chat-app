@@ -71,7 +71,6 @@ const LeftSidebar = () => {
   };
 
   // start (or open existing) chat with the searched user
-  // start (or open existing) chat with the searched user
   const addChat = async (targetUser) => {
     try {
       const alreadyExists = chatData.find((c) => c.rId === targetUser.id);
@@ -89,6 +88,7 @@ const LeftSidebar = () => {
       await setDoc(newMessageRef, {
         createdAt: serverTimestamp(),
         messages: [],
+        users: [userData.id, targetUser.id], // <-- NEW: records who can access this conversation
       });
 
       await updateDoc(doc(db, "chats", targetUser.id), {
