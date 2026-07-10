@@ -13,7 +13,15 @@ import { uploadToCloudinary } from '../../config/cloudinary'
 import { toast } from 'react-toastify'
 
 const ChatBox = () => {
-  const { userData, chatUser, messagesId, updateChatPreview } = useContext(AppContext)
+  const {
+    userData,
+    chatUser,
+    setChatUser,
+    messagesId,
+    setMessagesId,
+    updateChatPreview,
+    setShowRightSidebar,
+  } = useContext(AppContext)
 
   const [input, setInput] = useState("")
   const [messages, setMessages] = useState([])
@@ -86,6 +94,12 @@ const ChatBox = () => {
     return timestamp.toDate().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
   }
 
+  // mobile: return to LeftSidebar
+  const goBack = () => {
+    setChatUser(null)
+    setMessagesId(null)
+  }
+
   if (!chatUser) {
     return (
       <div className="chat-welcome">
@@ -99,12 +113,23 @@ const ChatBox = () => {
     <div className='chat-box'>
 
       <div className="chat-user">
-        <img src={chatUser.userData.avatar || assets.profile_img} alt="" />
-        <p>
-          {chatUser.userData.name || chatUser.userData.username}
-          <img className='dot' src={assets.green_dot} alt="" />
-        </p>
-        <img src={assets.help_icon} className='help' alt="" />
+        <img
+          src={assets.arrow_icon}
+          alt=""
+          className="back-icon"
+          onClick={goBack}
+        />
+        <div
+          className="chat-user-info"
+          onClick={() => setShowRightSidebar(true)}
+        >
+          <img src={chatUser.userData.avatar || assets.profile_img} alt="" />
+          <p>
+            {chatUser.userData.name || chatUser.userData.username}
+            <img className='dot' src={assets.green_dot} alt="" />
+          </p>
+        </div>
+        <img src={assets.help_icon} className='help' alt="" onClick={() => setShowRightSidebar(true)} />
       </div>
 
       <div className="chat-msg">

@@ -6,7 +6,7 @@ import { AppContext } from '../../context/AppContext'
 import { doc, onSnapshot } from 'firebase/firestore'
 
 const RightSidebar = () => {
-    const { chatUser, messagesId } = useContext(AppContext)
+    const { chatUser, messagesId, setShowRightSidebar } = useContext(AppContext)
     const [mediaMessages, setMediaMessages] = useState([])
 
     useEffect(() => {
@@ -38,6 +38,13 @@ const RightSidebar = () => {
 
     return (
         <div className='rs'>
+            <img
+                src={assets.arrow_icon}
+                alt=""
+                className="rs-close"
+                onClick={() => setShowRightSidebar(false)}
+            />
+
             <div className="rs-profile">
                 <img src={chatUser.userData.avatar || assets.profile_img} alt="" />
                 <h3>

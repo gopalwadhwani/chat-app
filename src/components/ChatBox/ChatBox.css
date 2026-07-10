@@ -22,11 +22,34 @@
     flex-shrink: 0;
 }
 
-.chat-user img:first-child {
+.back-icon {
+    width: 22px;
+    cursor: pointer;
+    display: none; /* hidden on desktop, LeftSidebar is always visible there */
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.back-icon:hover {
+    transform: translateX(-2px);
+}
+
+.chat-user-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    min-width: 0;
+}
+
+.chat-user img:first-child,
+.chat-user-info img {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
 .chat-user p {
@@ -38,17 +61,23 @@
     font-size: 18px;
     font-weight: 600;
     color: #1c1c1c;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dot {
     width: 10px !important;
     height: 10px;
     border-radius: 50%;
+    flex-shrink: 0;
 }
 
 .help {
     width: 22px;
     cursor: pointer;
+    flex-shrink: 0;
     transition: transform 0.25s ease;
 }
 
@@ -139,8 +168,6 @@
 }
 
 /* ================= Image Messages ================= */
-
-/* Image messages */
 
 .s-msg .msg-img,
 .r-msg .msg-img {
@@ -251,6 +278,10 @@
         padding: 16px;
     }
 
+    .back-icon {
+        display: block; /* show back button on mobile/tablet */
+    }
+
     .chat-user p {
         font-size: 16px;
     }
@@ -285,7 +316,6 @@
         width: 22px;
     }
 
-    /* inside @media (max-width: 768px) */
     .s-msg .msg-img,
     .r-msg .msg-img {
         width: 180px;
@@ -303,7 +333,8 @@
         gap: 10px;
     }
 
-    .chat-user img:first-child {
+    .chat-user img:first-child,
+    .chat-user-info img {
         width: 40px;
         height: 40px;
     }
@@ -313,6 +344,10 @@
     }
 
     .help {
+        width: 20px;
+    }
+
+    .back-icon {
         width: 20px;
     }
 
@@ -353,13 +388,12 @@
         width: 20px;
     }
 
-    /* inside @media (max-width: 480px) */
-.s-msg .msg-img,
-.r-msg .msg-img {
-    width: 150px;
-    height: 150px;
-    max-width: min(150px, 70vw);
-}
+    .s-msg .msg-img,
+    .r-msg .msg-img {
+        width: 150px;
+        height: 150px;
+        max-width: min(150px, 70vw);
+    }
 
     .chat-welcome img {
         width: 60px;
