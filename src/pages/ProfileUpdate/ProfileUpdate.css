@@ -25,6 +25,8 @@
     padding: 40px 50px;
 
     box-shadow: 0 15px 40px rgba(0,0,0,.15);
+
+    position: relative;
 }
 
 .profile-container form{
@@ -34,6 +36,23 @@
     flex-direction: column;
 
     gap: 18px;
+
+    position: relative;
+}
+
+.profile-back{
+    width: 22px;
+    cursor: pointer;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transition: transform 0.25s ease;
+}
+
+.profile-back:hover{
+    transform: translateX(-3px);
 }
 
 .profile-container h3{
@@ -42,6 +61,8 @@
     color: #001030;
 
     margin-bottom: 10px;
+
+    padding-left: 34px;
 }
 
 .profile-container label{
