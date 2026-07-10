@@ -137,7 +137,7 @@
     object-fit: contain;
 }
 
-/* Responsive */
+/* ================= Tablet ================= */
 
 @media (max-width: 768px){
 
@@ -157,4 +157,65 @@
         height: 180px;
     }
 
+}
+
+/* ================= Small Phones ================= */
+
+@media (max-width: 480px){
+
+    .profile{
+        padding: 16px;
+    }
+
+    .profile-container{
+        width: 100%;
+        max-width: 100%;
+
+        border-radius: 12px;
+
+        padding: 24px 18px;
+
+        gap: 24px;
+    }
+
+    .profile-back{
+        width: 20px;
+    }
+
+    .profile-container h3{
+        font-size: 22px;
+        padding-left: 30px;
+    }
+
+    .profile-container label{
+        font-size: 14px;
+        gap: 12px;
+    }
+
+    .profile-container label img{
+        width: 60px;
+        height: 60px;
+        border-width: 2px;
+    }
+
+    .profile-container input,
+    .profile-container textarea{
+        padding: 11px 14px;
+        font-size: 14px;
+    }
+
+    .profile-container textarea{
+        height: 100px;
+    }
+
+    .profile-container button{
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .profile-pic{
+        width: 130px;
+        height: 130px;
+    }
 }
